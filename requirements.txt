@@ -1,0 +1,6 @@
+zenml
+pandas
+scikit-learn
+numpy
+matplotlib
+jupyter
