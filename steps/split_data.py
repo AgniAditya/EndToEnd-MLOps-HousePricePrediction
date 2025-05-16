@@ -1,0 +1,3 @@
+
+def splitData(data):
+    pass

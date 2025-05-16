@@ -1,0 +1,2 @@
+def CleanData(Data):
+    pass
