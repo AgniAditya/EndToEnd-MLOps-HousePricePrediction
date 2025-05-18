@@ -1,3 +1,7 @@
-from pipeline import training_pipeline
-def Runpipeline():
-    training_pipeline.Trianingpipeline(data="G:/My Stuff/2_ML/Projects/House Pricing/dataset/house_prices.csv")
+from pipeline.training_pipeline import trianingpipeline
+
+if __name__ == "__main__":
+    """
+    Run the Pipeline
+    """
+    trianingpipeline(data="G:/My Stuff/2_ML/Projects/House Pricing/dataset/house_prices.csv")
