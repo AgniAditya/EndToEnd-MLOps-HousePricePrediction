@@ -1,4 +1,5 @@
 from pipeline.training_pipeline import trianingpipeline
+from zenml import pipeline
 
 if __name__ == "__main__":
     """

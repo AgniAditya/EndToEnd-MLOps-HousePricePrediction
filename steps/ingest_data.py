@@ -1,6 +1,9 @@
 from abc import abstractmethod
 import pandas as pd
 import logging
+from zenml import step
+
+@step
 class IngestData:
     """
     Ingesting the data
