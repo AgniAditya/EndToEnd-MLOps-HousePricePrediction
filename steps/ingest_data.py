@@ -1,9 +1,8 @@
-from abc import abstractmethod
 import pandas as pd
 import logging
 from zenml import step
 
-@step
+
 class IngestData:
     """
     Ingesting the data
@@ -14,3 +13,20 @@ class IngestData:
     def getData(self):
         logging.info(f'Ingesting data from {self.data_path}')
         return pd.read_csv(self.data)
+
+@step
+def ingestdata(data : str) -> pd.DataFrame:
+    """
+    Ingesting the data
+
+    Args:
+        data is the string of the data path
+    Returns:
+        It retruns pandas DataFrame
+    """
+
+    try:
+        return IngestData(data).getData()
+    except Exception as e:
+        logging.error(f'Error while ingesting the data: {e}')
+        raise e
