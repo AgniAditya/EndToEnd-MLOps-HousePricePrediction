@@ -12,4 +12,4 @@ def trianingpipeline(data : str):
     dataframe = ingestdata(data)
     X_train,X_test,y_train,y_test = clean_df(dataframe)
     trained_model = trainmodel(X_train,y_train)
-    r2_score_rf,rmse,mae,mape = evalutemodel(trained_model,X_test,y_test)
+    evalutemodel(trained_model,X_test,y_test)

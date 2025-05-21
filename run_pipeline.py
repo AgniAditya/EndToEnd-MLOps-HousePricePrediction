@@ -1,7 +1,11 @@
 from pipeline.training_pipeline import trianingpipeline
-from zenml import pipeline
+from config.mlflow_setup import setup_mlflow
 
 if __name__ == "__main__":
+    """
+    Stepup the MLFlow
+    """
+    setup_mlflow()
     """
     Run the Pipeline
     """
