@@ -1,5 +1,6 @@
 import logging
 import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
 class Model:
     """
     Interface of the Model implementation
@@ -12,9 +13,8 @@ class RandomForestModel(Model):
     """
     Implementation of the RandomForestModel
     """
-    def train(self,X_train : pd.DataFrame,y_train : pd.Series):
+    def train(self,X_train : pd.DataFrame,y_train : pd.Series) -> RandomForestRegressor:
         try:
-            from sklearn.ensemble import RandomForestRegressor
             rf_model = RandomForestRegressor(random_state=42)
             rf_model.fit(X_train,y_train)
             return rf_model

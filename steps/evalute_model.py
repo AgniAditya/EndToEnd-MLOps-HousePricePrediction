@@ -2,7 +2,7 @@ import logging
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_absolute_percentage_error
-from sklearn.base import RegressorMixin
+from sklearn.ensemble import RandomForestRegressor
 import numpy as np
 from zenml import step
 import pandas as pd
@@ -10,7 +10,7 @@ from typing import Tuple
 from typing_extensions import Annotated
 
 @step
-def evalutemodel(model: RegressorMixin,
+def evalutemodel(model: RandomForestRegressor,
     X_test: pd.DataFrame,
     y_test: pd.Series) -> Tuple[
     Annotated[float,"r2_socre"],
