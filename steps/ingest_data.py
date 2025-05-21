@@ -11,7 +11,7 @@ class IngestData:
         self.data = data
     
     def getData(self):
-        logging.info(f'Ingesting data from {self.data_path}')
+        logging.info(f'Ingesting data from {self.data}')
         return pd.read_csv(self.data)
 
 @step

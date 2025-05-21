@@ -1,14 +1,20 @@
 from abc import abstractmethod
 import logging
-from sklearn.linear_model import LinearRegression
 from zenml import step
+from Data_analysis.model_dev import RandomForestModel
+import pandas as pd
 
 @step
-def trainmodel(X_train,Y_train):
+def trainmodel(X_train : pd.DataFrame,Y_train : pd.DataFrame):
     """
     Train the Model on the training data
     """
-    logging.info(f'Training the model on data')
-    model = LinearRegression()
-    model.fit(X_train,Y_train)
-    return model
+    try:
+        logging.info(f'Training has started')
+        model = RandomForestModel()
+        model.train(X_train,Y_train)
+        logging.info(f'Trainig is completed')
+        return model
+    except Exception as e:
+        logging.error(f'Error in the training process')
+        raise e

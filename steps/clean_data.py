@@ -2,12 +2,12 @@ import logging
 import pandas as pd
 from zenml import step
 from Data_analysis.data_cleaning import (
-    DataDivideStrategy,
-    DataPreProcessing,
-    DataCleaning
+    DataDivision,
+    DataPreprocessing,
 )
 from typing_extensions import Annotated
 from typing import Tuple
+import numpy as np
 
 @step
 def clean_df(df: pd.DataFrame) -> Tuple[
@@ -26,18 +26,17 @@ def clean_df(df: pd.DataFrame) -> Tuple[
         X_trian : Traning Data
         X_test : Testing Data
         y_trian : Traning label
-        y_test : Testing labes
+        y_test : Testing labels
     """
     try:
         logging.info("Data cleaning Started")
-        process_Startegy = DataPreProcessing()
-        data_cleaning = DataCleaning(df,process_Startegy)
-        processed_data = data_cleaning.handle_data()
-
-        divide_strategy = DataDivideStrategy()
-        data_cleaning = data_cleaning(processed_data,divide_strategy)
-        X_train, X_test, y_train, y_test = data_cleaning.handle_data()
+        df = DataPreprocessing().handle_data(df)
         logging.info("Data cleaning comleted")
+
+        logging.info("Data dividing has started")
+        X_train, X_test, y_train, y_test = DataDivision().handle_data(df)
+        logging.info("Data dividing has ended")
+
         return X_train, X_test, y_train, y_test
     except Exception as e:
         logging.error("Error in cleaning data: {}".format(e))

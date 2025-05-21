@@ -1,4 +1,4 @@
-from steps.clean_data import cleandata
+from steps.clean_data import clean_df
 from steps.ingest_data import ingestdata
 from steps.evalute_model import evalutemodel
 from steps.train_model import trainmodel
@@ -10,6 +10,6 @@ def trianingpipeline(data : str):
     Step by Step runing pipeline
     """
     dataframe = ingestdata(data)
-    X_train,Y_train,x_test,y_test = cleandata(dataframe)
-    trained_model = trainmodel(X_train,Y_train)
-    evalutemodel(trained_model,x_test,y_test)
+    X_train,X_test,y_train,y_test = clean_df(dataframe)
+    trained_model = trainmodel(X_train,y_train)
+    r2_score_rf,rmse,mae,mape = evalutemodel(trained_model,X_test,y_test)
