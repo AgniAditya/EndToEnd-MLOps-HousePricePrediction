@@ -2,3 +2,5 @@ dataset
 venv
 .zen
 mlruns
+models
+mlartifacts
