@@ -21,6 +21,9 @@ def trainmodel(X_train: pd.DataFrame, Y_train: pd.DataFrame):
         # Create models directory if it doesn't exist
         os.makedirs("models", exist_ok=True)
         
+        # Save the model and scaler locally
+        joblib.dump(model, "models/model.pkl")
+        
         # Save the scaler
         scaler = StandardScaler()
         X_scaled = scaler.fit_transform(X_train)
@@ -57,7 +60,7 @@ def trainmodel(X_train: pd.DataFrame, Y_train: pd.DataFrame):
                 stage="Production"
             )
         
-        logging.info(f'Training is completed and model is saved')
+        logging.info(f'Training is completed and model is saved locally')
         return model
     except Exception as e:
         logging.error(f'Error in the training process: {str(e)}')

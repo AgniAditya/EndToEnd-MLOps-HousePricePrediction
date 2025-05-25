@@ -2,12 +2,9 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-import mlflow
 import joblib
 import logging
-
-mlflow.set_tracking_uri("http://localhost:5000")
-
+import os
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -49,10 +46,15 @@ class HouseFeatures(BaseModel):
             }
         }
 
-# Load model and scaler
+# Load model and scaler from local files
 try:
-    model = mlflow.pyfunc.load_model("models:/house_price_model/Production")
+    # Create models directory if it doesn't exist
+    os.makedirs("models", exist_ok=True)
+    
+    # Load the model and scaler
+    model = joblib.load("models/model.pkl")
     scaler = joblib.load("models/scaler.pkl")
+    logging.info("Model and scaler loaded successfully")
 except Exception as e:
     logging.error(f"Error loading model: {str(e)}")
     raise
@@ -71,7 +73,7 @@ async def predict_price(features: HouseFeatures):
         
         return {
             "predicted_price": float(prediction[0]),
-            "prediction_confidence": "high"  # You can add confidence metrics here
+            "prediction_confidence": "high"
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

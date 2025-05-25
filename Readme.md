@@ -76,4 +76,24 @@ This project is open-source. Please check the repository for license details or 
 
 ---
 
+## Model Files
+
+The trained model files are not included in this repository due to their size. To run the API:
+
+1. Train the model using the training pipeline:
+   ```bash
+   python run_pipeline.py
+   ```
+
+2. This will create the required model files in the `models/` directory:
+   - `models/model.pkl`: The trained model
+   - `models/scaler.pkl`: The feature scaler
+
+3. Then run the API:
+   ```bash
+   python app.py
+   ```
+
+---
+
 > _Empower your ML projects with robust MLOps—start predicting and deploying with confidence!_
