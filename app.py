@@ -1,8 +1,10 @@
 from fastapi import FastAPI
-from Data_analysis.data_cleaning import DataDivision
 from steps.ingest_data import ingestdata
 import joblib
 from sklearn.preprocessing import LabelEncoder
+
+model = joblib.load('./models/model.pkl')
+print('Loaded')
 
 app = FastAPI()
 
@@ -30,9 +32,12 @@ test_to_numeric = ['Title','location','Transaction','Furnishing','facing','Statu
 for x in test_to_numeric:
     df[x] = label_encoder.fit_transform(df[x])
 
-model = joblib.load('./models/model.pkl')
-print('Loaded')
+@app.get('/')
+def main():
+    return "message : {This is House predicton System API}"
 
-# Make prediction
-prediction = model.predict(df)
-print(f"Predicted price: {prediction[0]:,.2f} rupees")
+@app.get('/predict')
+def predict(data : dict):
+    # Make prediction
+    prediction = model.predict(df)
+    return f"Predicted price: {prediction[0]:,.2f}"
