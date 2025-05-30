@@ -7,7 +7,6 @@ from Data_analysis.data_cleaning import (
 )
 from typing_extensions import Annotated
 from typing import Tuple
-import numpy as np
 
 @step
 def clean_df(df: pd.DataFrame) -> Tuple[
