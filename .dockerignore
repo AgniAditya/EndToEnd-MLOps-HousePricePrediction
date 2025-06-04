@@ -1,0 +1,39 @@
+# Version control
+.git
+.github
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.env
+.venv
+env/
+ENV/
+
+# Documentation and non-essential files
+Readme.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT..md
+structure_of_project/
+
+# Development and testing artifacts
+mlartifacts/
+mlruns/
+.zen/
+Data_analysis/
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store

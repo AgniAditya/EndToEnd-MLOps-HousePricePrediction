@@ -19,7 +19,7 @@ try:
             encoder = LabelEncoder()
             encoder.classes_ = np.array(classes)
             label_encoders[col] = encoder
-    logger.info("Model successfully")
+    logger.info("Model has Started")
 except Exception as e:
     logger.error(f"Error loading model or encoders: {str(e)}")
     raise
