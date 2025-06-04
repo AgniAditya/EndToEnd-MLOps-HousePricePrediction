@@ -16,7 +16,7 @@ jobs:
     - name: Download and unzip model files
       run: |
         mkdir -p model
-        curl -L -o model/models.zip https://github.com/EndToEnd-MLOps-HousePricePrediction/releases/download/v1.0-models/models.zip
+        curl --fail -L -v -o model/models.zip https://github.com/AgniAditya/EndToEnd-MLOps-HousePricePrediction/releases/tag/v1.0
         unzip model/models.zip -d model
 
     - name: List model files
