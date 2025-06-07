@@ -11,6 +11,9 @@ RUN pip install --upgrade pip
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Download the model from github releases
+COPY model /app/model
+
 # Copy the rest of the app files
 COPY . .
 

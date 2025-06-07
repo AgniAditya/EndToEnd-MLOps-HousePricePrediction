@@ -1,6 +1,6 @@
 # 🏠 End-to-End MLOps: House Price Prediction
 
-An open-source, production-grade workflow for building, deploying, and monitoring machine learning models to predict house prices. This project demonstrates best practices in MLOps by covering the entire lifecycle of an ML solution—from data collection to model retraining and maintenance.
+An open-source, production-grade workflow for building, deploying, and monitoring machine learning models to predict house prices. This project demonstrates best practices in MLOps by covering the full ML lifecycle.
 
 ---
 
@@ -43,6 +43,32 @@ cd EndToEnd-MLOps-HousePricePrediction
 **4. Customize for your needs**
 - Use your own dataset by replacing the data source.
 - Tweak the model, pipeline stages, or deployment steps as required.
+
+---
+
+## 🐳 Run with Docker
+
+You can easily deploy and use the House Price Prediction model using Docker, without setting up Python or installing any dependencies.
+
+**1. Pull the Docker image:**
+```bash
+docker pull agniaditya/house-price-fastapi
+```
+
+**2. Run the Docker container:**
+```bash
+docker run -d -p 8000:8000 agniaditya/house-price-fastapi
+```
+This will start the FastAPI server for the model and bind it to port `8000` on your machine.
+
+**3. Access the API:**
+
+- Visit [http://localhost:8000/docs](http://localhost:8000/docs) in your browser for the interactive FastAPI documentation.
+- You can make predictions by sending POST requests to the `/predict` endpoint as described in the docs.
+
+**Docker Hub:**  
+Find the published Docker image and more usage instructions at:  
+[https://hub.docker.com/r/agniaditya/house-price-fastapi](https://hub.docker.com/r/agniaditya/house-price-fastapi)
 
 ---
 
@@ -89,9 +115,9 @@ The trained model files are not included in this repository due to their size. T
    - `models/model.pkl`: The trained model
    - `models/scaler.pkl`: The feature scaler
 
-3. Then run the API:
+3. Then run the API using Uvicorn:
    ```bash
-   python app.py
+   uvicorn app:app --reload
    ```
 
 ---
