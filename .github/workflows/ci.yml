@@ -13,15 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Download and unzip model files
-      run: |
-        mkdir -p model
-        curl --fail -L -v -o model/models.zip https://github.com/AgniAditya/EndToEnd-MLOps-HousePricePrediction/releases/download/v1.0/models.zip
-        unzip model/models.zip -d model
-
-    - name: List model files
-      run: ls -R model
-    
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
       
@@ -36,6 +27,6 @@ jobs:
       with:
         context: .
         push: ${{ github.event_name != 'pull_request' }}
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/house-price-model:1.0
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/house-price-model:1.1
         cache-from: type=gha
         cache-to: type=gha,mode=max
