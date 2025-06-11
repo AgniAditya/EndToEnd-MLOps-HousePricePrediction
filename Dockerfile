@@ -4,6 +4,12 @@ FROM python:3.11-slim
 # Set working directory
 WORKDIR /app
 
+# Install system dependencies for downloading and extracting files
+RUN apt-get update && apt-get install -y \
+    curl \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
 # Copy requirements file and install dependencies
 COPY requirements.txt .
 
