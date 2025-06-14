@@ -20,7 +20,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Download and extract model files during build
 RUN mkdir -p models && \
     curl --fail -L -o models.zip https://github.com/AgniAditya/EndToEnd-MLOps-HousePricePrediction/releases/download/v1.0/models.zip && \
-    unzip models.zip -d models && \
+    unzip -j models.zip -d models && \
     rm models.zip
 
 # Copy the rest of the app files
