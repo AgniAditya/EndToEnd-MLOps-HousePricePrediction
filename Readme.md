@@ -76,8 +76,8 @@ uvicorn app:app --reload
 No Python? No problem! Deploy the model API in seconds:
 
 ```bash
-docker pull agniaditya/house-price-fastapi
-docker run -d -p 8000:8000 agniaditya/house-price-fastapi
+docker pull agniaditya/house-price-model:1.1
+docker run -d -p 8000:8000 agniaditya/house-price-model:1.1
 ```
 - Visit [http://localhost:8000/docs](http://localhost:8000/docs) for API documentation.
 - Full Docker Hub details: [Docker Hub](https://hub.docker.com/r/agniaditya/house-price-fastapi)
