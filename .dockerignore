@@ -1,39 +1,64 @@
-# Version control
+# .dockerignore file for House Price Prediction API
+# This file specifies which files and directories should be excluded from the Docker build context
+# Excluding unnecessary files reduces build time and final image size
+
+# Version control files
 .git
-.github
 .gitignore
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
+# Python cache and compiled files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
 .Python
+*.so
+
+# Virtual environment
 venv/
-.env
-.venv
 env/
 ENV/
 
-# Documentation and non-essential files
-Readme.md
-CONTRIBUTING.md
-CODE_OF_CONDUCT..md
-structure_of_project/
-
-# Development and testing artifacts
-mlartifacts/
-mlruns/
-.zen/
-Data_analysis/
-
-# IDE specific files
+# IDE and editor files
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
-# Logs and temporary files
+# Jupyter notebook checkpoints
+.ipynb_checkpoints
+
+# MLflow artifacts and runs (these are generated during training)
+mlruns/
+mlartifacts/
+
+# ZenML artifacts and metadata
+.zen/
+
+# Model files (these are downloaded during build)
+models/
+
+# Dataset files (not needed in production container)
+dataset/
+
+# Documentation and project structure files
+structure_of_project/
+README.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT..md
+
+# Development and testing files
 *.log
-*.tmp
+.coverage
+.pytest_cache/
+htmlcov/
+
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
